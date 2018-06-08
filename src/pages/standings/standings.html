@@ -1,0 +1,83 @@
+
+<ion-header>
+
+  <ion-navbar>  </ion-navbar>
+
+  <ion-toolbar>
+    <ion-segment color='secondary' [(ngModel)]='divisionFilter' (ionChange)='filterDivision($event)'>
+      <ion-segment-button value='division'>
+        Division
+      </ion-segment-button>
+      <ion-segment-button value='all'>
+        All
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content >
+
+  <ion-list [virtualScroll]='standings' [approxItemHeight]="'132px'" [headerFn]='getHeader'>
+
+      <ion-item-divider color='secondary' *virtualHeader='let header'>
+          {{header}}
+        </ion-item-divider>
+
+    <ion-item *virtualItem='let team'>
+
+        <ion-row>
+            <ion-col>
+              <h2 ion-text color='primary'>
+                {{team.teamName}}
+              </h2>
+            </ion-col>
+          </ion-row>
+  
+          <ion-row>
+            <ion-col col-2>
+              <h4 ion-text font-weight='bold'>Wins</h4>
+            </ion-col>
+            <ion-col col-2>
+              <h4>Losses</h4>
+            </ion-col>
+            <ion-col col-3>
+              <h4>W/L Pct</h4>
+            </ion-col>
+            <ion-col col-2>
+              <h4>PF</h4>
+            </ion-col>
+            <ion-col col-2>
+              <h4>PA</h4>
+            </ion-col>
+            <ion-col col-1>
+              <h4>Diff</h4>
+            </ion-col>
+          </ion-row>
+  
+          <ion-row>
+            <ion-col col-2>
+              <h5>{{team.wins}}</h5>
+            </ion-col>
+            <ion-col col-2>
+              <h5>{{team.losses}}</h5>
+            </ion-col>
+            <ion-col col-3>
+              <h5>{{team.winningPct}}</h5>
+            </ion-col>
+            <ion-col col-2>
+              <h5>{{team.pointsFor}}</h5>
+            </ion-col>
+            <ion-col col-2>
+              <h5>{{team.pointsAgainst}}</h5>
+            </ion-col>
+            <ion-col col-1>
+              <h5>{{team.pointsDiff}}</h5>
+            </ion-col>
+          </ion-row>
+
+    </ion-item>
+  </ion-list>
+
+</ion-content>
